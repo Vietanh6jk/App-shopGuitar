@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ComponentScreen1 from './src/components/ComponentScreen1';
 import ComponentLogin from './src/components/ComponentLogin';
+import ComponenHome from './src/components/ComponenHome';
+import ComponentDetail from './src/components/ComponentDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +16,8 @@ export default function App() {
             <Stack.Navigator initialRouteName="ComponentScreen1" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="ComponentScreen1" component={ComponentScreen1} />
                 <Stack.Screen name="ComponentLogin" component={ComponentLogin} />
-                {/* <Stack.Screen name="Layout_1c" component={Layout1c} /> */}
+                <Stack.Screen name="ComponenHome" component={ComponenHome} />
+                <Stack.Screen name="ComponentDetail" component={ComponentDetail} />
             </Stack.Navigator>
         </NavigationContainer>
     );
