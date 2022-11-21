@@ -27,11 +27,10 @@ const ComponenHome = ({ navigation }) => {
         setDbGuitar(listItem)
     }, [])
 
-    //
-    const renderGuitar = ({ item }) => {
-
+    //ham thay doi so pice
+    const setPriceString = (val) => {
         let str = '';
-        let a = item.price.toString();
+        let a =val.toString();
         let x = 0;
         if (a.length > 3) {
             let i = 0;
@@ -90,8 +89,16 @@ const ComponenHome = ({ navigation }) => {
             }
         }
 
-        let str_price = str;
-
+        return str;
+    }
+    //
+    const renderGuitar = ({ item }) => {
+        let str_price = setPriceString(Math.floor(item.price- (item.price * item.sale )/100));
+        
+        // call detail Item
+        const getCallDetail = () => {
+            navigation.navigate('ComponentDetail', {item:item});
+        }
 
         return (
             <View style={[, {
@@ -105,10 +112,12 @@ const ComponenHome = ({ navigation }) => {
             }]} >
                 <Image style={[, { width: 150, height: 150, }]} source={{ uri: item.img }} />
                 <View style={[, { padding: 10, }]}  >
-                    <Text style={[, {
-                        fontSize: 12,
-                        fontWeight: 'bold',
-                    }]} >{item.name}</Text>
+                    <TouchableOpacity onPress={() => getCallDetail()}>
+                        <Text style={[, {
+                            fontSize: 12,
+                            fontWeight: 'bold',
+                        }]} >{item.name}</Text>
+                    </TouchableOpacity>
                     <Text style={[, {
                         fontSize: 13,
                         color: color.color_main,
@@ -129,7 +138,13 @@ const ComponenHome = ({ navigation }) => {
         )
     }
 
+    /**
+     * render item cho flash sale
+     */
     const renderItemSale = ({ item }) => {
+
+        let str_priceSale = setPriceString(Math.floor(item.price- (item.price * item.sale )/100));
+        let str_price = setPriceString(Math.floor(item.price));
 
 
         if (!item.favourite) {
@@ -149,9 +164,9 @@ const ComponenHome = ({ navigation }) => {
                 <Image style={[, { width: 110, height: 110 }]} source={{ uri: item.img }} />
                 <View style={[styles.flex_1, { marginVertical: 5 }]} >
                     <Text style={[, { fontWeight: 'bold', fontSize: 15 }]}  >{item.name}</Text>
-                    <Text style={[, { textDecorationLine: 'line-through', opacity: 0.5, marginTop: 5, }]} >$ {item.price}</Text>
+                    <Text style={[, { textDecorationLine: 'line-through', opacity: 0.5, marginTop: 5, }]} >$ {str_price}</Text>
                     <View style={[styles.row, {}]} >
-                        <Text style={[, { color: color.color_main, fontWeight: 'bold' }]} >$ {item.price - (item.price * item.sale / 100)}</Text>
+                        <Text style={[, { color: color.color_main, fontWeight: 'bold' }]} >$ {str_priceSale}</Text>
                         <Text style={[, { fontSize: 11, marginTop: 2, }]} > ( {item.sale}% ) </Text>
                     </View>
                     <View style={[styles.row, { alignItems: 'center', }]} >
@@ -170,7 +185,7 @@ const ComponenHome = ({ navigation }) => {
     let styleMenuBarName = 1;
     // let styleMenuBarStyle = styles.menuClick;
     let styleMenuBarStyle = (val) => {
-        if (val === styleMenuBarName ) {
+        if (val === styleMenuBarName) {
             return styles.menuClick;
         }
         return null;
@@ -295,6 +310,7 @@ const ComponenHome = ({ navigation }) => {
                     alignItems: 'center',
                     marginBottom: 15,
                 }]} >
+                    {/* Chua xong can chayj tgian */}
                     <Text style={[, { fontWeight: 'bold', marginRight: 15 }]} >Flash Sale</Text>
                     <Text style={[, { padding: 5, paddingHorizontal: 7, backgroundColor: color.color_main, marginRight: 5, borderRadius: 10, }]} >01</Text>
                     <Text style={[, { padding: 5, paddingHorizontal: 7, backgroundColor: color.color_main, marginRight: 5, borderRadius: 10, }]} >24</Text>
@@ -341,26 +357,24 @@ const ComponenHome = ({ navigation }) => {
                 justifyContent: 'space-around'
 
             }]}  >
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
                     <View style={styleMenuBarStyle(1)}></View>
-                    <IconMaterialCommunityIcons name={ styleMenuBarName===1 ? 'home' : 'home-outline'} size={25} color={'#eee'} />
+                    <IconMaterialCommunityIcons name={styleMenuBarName === 1 ? 'home' : 'home-outline'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
                     <View style={styleMenuBarStyle(2)}></View>
-                    <IconFontAwesome name={ styleMenuBarName===2 ? 'heart' : 'heart-o'} size={25} color={'#eee'} />
+                    <IconFontAwesome name={styleMenuBarName === 2 ? 'heart' : 'heart-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
                     <View style={styleMenuBarStyle(3)}></View>
-                    <IconAntDesign name={ styleMenuBarName===3 ? 'downsquare' : 'down-square-o'} size={25} color={'#eee'} />
+                    <IconAntDesign name={styleMenuBarName === 3 ? 'downsquare' : 'down-square-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
                     <View style={styleMenuBarStyle(4)}></View>
-                    <IconFontAwesome name={ styleMenuBarName===4 ? 'user' : 'user-o'} size={25} color={'#eee'} />
+                    <IconFontAwesome name={styleMenuBarName === 4 ? 'user' : 'user-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
             </View>
 
-            {/* <Text>ComponenHome</Text>
-            <Button title=' next ' onPress={() => navigation.navigate('ComponentDetail')} /> */}
 
         </View>
     )
