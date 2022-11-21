@@ -16,6 +16,11 @@ const ComponenHome = ({ navigation }) => {
     //
     let { z_item, listItem } = data;
 
+
+    let spConlai = () => {
+        return Math.floor(Math.random() * (100 - 50)) + 50;
+    };
+
     //
     useEffect(() => {
         setDbGuitar(listItem)
@@ -45,8 +50,7 @@ const ComponenHome = ({ navigation }) => {
                             str += key + "";
                         }
 
-                        if(x == 3)
-                        {
+                        if (x == 3) {
                             x = 0;
                         }
                         break;
@@ -59,8 +63,7 @@ const ComponenHome = ({ navigation }) => {
                             str += key + "";
                         }
 
-                        if(x == 3)
-                        {
+                        if (x == 3) {
                             x = 0;
                         }
                         break;
@@ -73,8 +76,7 @@ const ComponenHome = ({ navigation }) => {
                             str += key + "";
                         }
 
-                        if(x == 3)
-                        {
+                        if (x == 3) {
                             x = 0;
                         }
                         break;
@@ -83,7 +85,7 @@ const ComponenHome = ({ navigation }) => {
                         str += key;
                         break;
                 }
-                i++ ;
+                i++;
             }
         }
 
@@ -120,8 +122,45 @@ const ComponenHome = ({ navigation }) => {
                 }]}
 
                 >
-                    <IconMaterialCommunityIcons name={item.favourite ?'heart':'heart-outline' } size={25} color={item.favourite ?'#f00':'#000' } />
+                    <IconMaterialCommunityIcons name={item.favourite ? 'heart' : 'heart-outline'} size={25} color={item.favourite ? '#f00' : '#000'} />
                 </TouchableOpacity>
+            </View>
+        )
+    }
+
+    const renderItemSale = ({ item }) => {
+
+
+        if (!item.favourite) {
+            return (
+                <View></View>
+            )
+        }
+
+        return (
+            <View style={[styles.row, {
+                backgroundColor: '#fff',
+                padding: 5,
+                borderRadius: 10,
+                alignItems: 'center',
+                marginBottom: 15,
+            }]} >
+                <Image style={[, { width: 110, height: 110 }]} source={{ uri: item.img }} />
+                <View style={[styles.flex_1, {marginVertical:5}]} >
+                    <Text style={[, { fontWeight: 'bold', fontSize: 15 }]}  >{item.name}</Text>
+                    <Text style={[, { textDecorationLine: 'line-through', opacity: 0.5, marginTop: 5, }]} >$ {item.price}</Text>
+                    <View style={[styles.row, {}]} >
+                        <Text style={[, { color: color.color_main, fontWeight: 'bold' }]} >$ {item.price - (item.price * item.sale / 100)}</Text>
+                        <Text style={[, { fontSize: 11, marginTop: 2, }]} > ( {item.sale}% ) </Text>
+                    </View>
+                    <View style={[styles.row, { alignItems: 'center', }]} >
+                        <IconMaterialCommunityIcons style={[, {}]} name='fire' size={18} color={"#ff4747"} />
+                        <Text style={[styles.flex_1, { fontSize: 12 }]} >{spConlai()} products left</Text>
+                        <TouchableOpacity style={[, {}]} >
+                            <Text style={[, { backgroundColor: '#000', color: '#fff', padding: 10, paddingHorizontal: 18, borderRadius: 10, marginRight: 5 }]} >Buy</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
         )
     }
@@ -134,7 +173,7 @@ const ComponenHome = ({ navigation }) => {
             <StatusBar />
             {/*  */}
             <View style={[styles.row, {
-                marginTop: 10,
+                marginTop: 5,
                 alignItems: 'center',
             }]}  >
                 <View style={[styles.row, styles.flex_1, {
@@ -167,7 +206,7 @@ const ComponenHome = ({ navigation }) => {
             {/*  */}
             <View style={[, {
                 // backgroundColor:'#0ff',
-                marginTop: 20,
+                marginTop: 15,
             }]} >
                 <View style={[styles.row, {
                     justifyContent: 'space-between',
@@ -191,9 +230,8 @@ const ComponenHome = ({ navigation }) => {
             </View>
 
             {/* list item */}
-
             <View style={[styles.row, {
-                marginTop: 30,
+                marginTop: 20,
             }]} >
                 {/* item */}
                 {/* <View style={[, {
@@ -238,8 +276,53 @@ const ComponenHome = ({ navigation }) => {
 
             </View>
 
+            {/*  */}
+            <View style={[styles.flex_1, {
+                marginTop: 20,
+            }]} >
+                <View style={[styles.row, {
+                    alignItems: 'center',
+                    marginBottom: 15,
+                }]} >
+                    <Text style={[, { fontWeight: 'bold', marginRight: 15 }]} >Flash Sale</Text>
+                    <Text style={[, { padding: 5, paddingHorizontal: 7, backgroundColor: color.color_main, marginRight: 5, borderRadius: 10, }]} >01</Text>
+                    <Text style={[, { padding: 5, paddingHorizontal: 7, backgroundColor: color.color_main, marginRight: 5, borderRadius: 10, }]} >24</Text>
+                    <Text style={[, { padding: 5, paddingHorizontal: 7, backgroundColor: color.color_main, marginRight: 5, borderRadius: 10, }]} >59</Text>
+                    <Text style={[styles.flex_1, { textAlign: 'right', fontSize: 12, color: color.color_main }]} >See All</Text>
+                </View>
 
+                {/* <View style={[styles.row, {
+                    backgroundColor: '#fff',
+                    padding: 5,
+                    borderRadius: 10,
+                    alignItems: 'center',
+                    marginTop: 15,
+                }]} >
+                    <Image style={[, { width: 110, height: 110 }]} source={{ uri: z_item.img }} />
+                    <View style={[styles.flex_1, {}]} >
+                        <Text style={[, { fontWeight: 'bold', fontSize: 15 }]}  >{z_item.name}</Text>
+                        <Text style={[, { textDecorationLine: 'line-through', opacity: 0.5, marginTop: 5, }]} >$ {z_item.price}</Text>
+                        <View style={[styles.row, {}]} >
+                            <Text style={[, { color: color.color_main, fontWeight: 'bold' }]} >$ {z_item.price - (z_item.price * z_item.sale / 100)}</Text>
+                            <Text style={[, { fontSize: 11, marginTop: 2, }]} > ( {z_item.sale}% ) </Text>
+                        </View>
+                        <View style={[styles.row, { alignItems: 'center', }]} >
+                            <IconMaterialCommunityIcons style={[, {}]} name='fire' size={18} color={"#ff4747"} />
+                            <Text style={[styles.flex_1, { fontSize: 12 }]} >{spConlai()} products left</Text>
+                            <TouchableOpacity style={[, {}]} >
+                                <Text style={[, { backgroundColor: '#000', color: '#fff', padding: 10, paddingHorizontal: 18, borderRadius: 10, marginRight: 5 }]} >Buy</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View> */}
+                <FlatList
+                    data={dbGuitar}
+                    keyExtractor={item => item.id}
+                    renderItem={renderItemSale}
+                />
 
+            </View>
+            
 
             {/* <Text>ComponenHome</Text>
             <Button title=' next ' onPress={() => navigation.navigate('ComponentDetail')} /> */}
@@ -247,6 +330,6 @@ const ComponenHome = ({ navigation }) => {
         </View>
     )
 }
-///                       style={[  ,{}]}               ///
+///                        style={[  ,{}]}              ///
 
 export default ComponenHome;
