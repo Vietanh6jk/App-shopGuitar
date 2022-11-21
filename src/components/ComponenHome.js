@@ -30,7 +30,7 @@ const ComponenHome = ({ navigation }) => {
     //ham thay doi so pice
     const setPriceString = (val) => {
         let str = '';
-        let a =val.toString();
+        let a = val.toString();
         let x = 0;
         if (a.length > 3) {
             let i = 0;
@@ -93,11 +93,11 @@ const ComponenHome = ({ navigation }) => {
     }
     //
     const renderGuitar = ({ item }) => {
-        let str_price = setPriceString(Math.floor(item.price- (item.price * item.sale )/100));
-        
+        let str_price = setPriceString(Math.floor(item.price - (item.price * item.sale) / 100));
+
         // call detail Item
         const getCallDetail = () => {
-            navigation.navigate('ComponentDetail', {item:item});
+            navigation.navigate('ComponentDetail', { item: item });
         }
 
         return (
@@ -143,9 +143,14 @@ const ComponenHome = ({ navigation }) => {
      */
     const renderItemSale = ({ item }) => {
 
-        let str_priceSale = setPriceString(Math.floor(item.price- (item.price * item.sale )/100));
+        let str_priceSale = setPriceString(Math.floor(item.price - (item.price * item.sale) / 100));
         let str_price = setPriceString(Math.floor(item.price));
 
+        // call detail Item
+        const getCallDetail = () => {
+            navigation.navigate('ComponentDetail', { item: item });
+        }
+        //
 
         if (!item.favourite) {
             return (
@@ -163,7 +168,9 @@ const ComponenHome = ({ navigation }) => {
             }]} >
                 <Image style={[, { width: 110, height: 110 }]} source={{ uri: item.img }} />
                 <View style={[styles.flex_1, { marginVertical: 5 }]} >
-                    <Text style={[, { fontWeight: 'bold', fontSize: 15 }]}  >{item.name}</Text>
+                    <TouchableOpacity onPress={() => getCallDetail()}>
+                        <Text style={[, { fontWeight: 'bold', fontSize: 15 }]}  >{item.name}</Text>
+                    </TouchableOpacity>
                     <Text style={[, { textDecorationLine: 'line-through', opacity: 0.5, marginTop: 5, }]} >$ {str_price}</Text>
                     <View style={[styles.row, {}]} >
                         <Text style={[, { color: color.color_main, fontWeight: 'bold' }]} >$ {str_priceSale}</Text>

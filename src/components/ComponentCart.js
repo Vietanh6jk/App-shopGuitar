@@ -1,14 +1,27 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StatusBar, TouchableOpacity } from 'react-native'
 import React from 'react'
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
+import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const ComponentCart = ({navigation}) => {
-  return (
-    <View>
-      <Text>ComponentCart</Text>
-      <Button title=' next ' onPress={() => navigation.navigate('ComponentCart')} />
+import styles from '../themes/styles';
+import color from '../themes/color';
 
-    </View>
-  )
+const ComponentCart = ({ navigation }) => {
+    return (
+        <View style={[styles.flex_1, {
+            backgroundColor: color.color_bg,
+            padding: 20,
+        }]} >
+            <StatusBar />
+            {/*  */}
+           
+
+
+            {/* <Button title=' next ' onPress={() => navigation.navigate('ComponentCart')} /> */}
+
+        </View>
+    )
 }
+///                        style={[  ,{}]}              ///
 
 export default ComponentCart;
