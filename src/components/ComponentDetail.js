@@ -9,8 +9,8 @@ import xuly from '../config/xuly';
 
 const ComponentDetail = ({ route, navigation }) => {
     let { item } = route.params;
-
-    let str_price = xuly.setPriceString(item.price);
+        
+    let str_price = xuly.setPriceString(Math.floor(item.price - (item.price * item.sale) / 100));
 
     return (
         <View style={[styles.flex_1, {

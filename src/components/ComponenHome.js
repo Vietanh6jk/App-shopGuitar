@@ -152,7 +152,7 @@ const ComponenHome = ({ navigation }) => {
         }
         //
 
-        if (!item.favourite) {
+        if (item.sale < 15) {
             return (
                 <View></View>
             )
