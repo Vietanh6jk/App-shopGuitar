@@ -6,22 +6,22 @@ import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommun
 import styles from '../themes/styles';
 import color from '../themes/color';
 
-const ComponentCart = ({ navigation }) => {
+const ComponentNhaGiaoHang = ({ navigation }) => {
     return (
         <View style={[styles.flex_1, {
             backgroundColor: color.color_bg,
             padding: 20,
         }]} >
             <StatusBar />
-            {/* nhaGiaoHang */}
+            {/*  */}
            
 
 
-            <Button title=' next ' onPress={() => navigation.navigate('ComponentNhaGiaoHang')} />
+            {/* <Button title=' next ' onPress={() => navigation.navigate('ComponentNhaGiaoHang')} /> */}
 
         </View>
     )
 }
 ///                        style={[  ,{}]}              ///
 
-export default ComponentCart;
+export default ComponentNhaGiaoHang;

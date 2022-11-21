@@ -19,3 +19,7 @@
 #### Screen 5: Cart  
 <img src="./AnhMinhHoa/screen_5_cart.png" alt="Không tồn tại !!!" width="300" />
 
+#### Screen 6: Nha Giao Hang
+<img src="./AnhMinhHoa/screen_6_nhaGiaoHang.png" alt="Không tồn tại !!!" width="300" />
+
+

@@ -217,11 +217,13 @@ const ComponenHome = ({ navigation }) => {
                     <IconFontAwesome style={[, { padding: 8, paddingHorizontal: 10, margin: 5, backgroundColor: '#fff', borderRadius: 20 }]} name='search' size={20} color='#000' />
                     <TextInput style={[styles.flex_1, { padding: 10, fontSize: 15, }]} placeholder='Search your guitar' />
                 </View>
-                <IconMaterialCommunityIcons style={[, {
-                    marginLeft: 18,
-                    padding: 8, backgroundColor: '#fff',
-                    borderRadius: 20,
-                }]} name='cart-variant' size={22} color='#000' />
+                <TouchableOpacity onPress={() => {navigation.navigate('ComponentCart')}}>
+                    <IconMaterialCommunityIcons style={[, {
+                        marginLeft: 18,
+                        padding: 8, backgroundColor: '#fff',
+                        borderRadius: 20,
+                    }]} name='cart-variant' size={22} color='#000' />
+                </TouchableOpacity>
                 <View style={[, {
                     padding: 5,
                     backgroundColor: '#f00',
