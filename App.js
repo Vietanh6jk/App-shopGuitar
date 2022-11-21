@@ -9,6 +9,7 @@ import ComponenHome from './src/components/ComponenHome';
 import ComponentDetail from './src/components/ComponentDetail';
 import ComponentCart from './src/components/ComponentCart';
 import ComponentNhaGiaoHang from './src/components/ComponentNhaGiaoHang';
+import ComponentAddress from './src/components/ComponentAddress';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
                 <Stack.Screen name="ComponentDetail" component={ComponentDetail} />
                 <Stack.Screen name="ComponentCart" component={ComponentCart} />
                 <Stack.Screen name="ComponentNhaGiaoHang" component={ComponentNhaGiaoHang} />
+                <Stack.Screen name="ComponentAddress" component={ComponentAddress} />
             </Stack.Navigator>
         </NavigationContainer>
     );

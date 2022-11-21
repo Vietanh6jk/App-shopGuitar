@@ -6,7 +6,7 @@ import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommun
 import styles from '../themes/styles';
 import color from '../themes/color';
 
-const ComponentNhaGiaoHang = ({ navigation }) => {
+const ComponentAddress = ({ navigation }) => {
     return (
         <View style={[styles.flex_1, {
             backgroundColor: color.color_bg,
@@ -17,11 +17,11 @@ const ComponentNhaGiaoHang = ({ navigation }) => {
            
 
 
-            <Button title=' next ' onPress={() => navigation.navigate('ComponentAddress')} />
+            {/* <Button title=' next ' onPress={() => navigation.navigate('ComponentAddress')} /> */}
 
         </View>
     )
 }
 ///                        style={[  ,{}]}              ///
 
-export default ComponentNhaGiaoHang;
+export default ComponentAddress;

@@ -12,6 +12,7 @@ import xuly from '../config/xuly';
 
 const ComponentCart = ({ navigation }) => {
 
+    // console.log('ComponentCart -----------------------');
     //
     let { z_item, listItem } = data;
 
@@ -28,12 +29,14 @@ const ComponentCart = ({ navigation }) => {
             if (item1 === item3) {
                 listItem.forEach(val => {
                     if (val.id === item1) {
+                        // val.numberItem = 1;// so item trong 1 gio hang
                         db.push(val)
                     }
                 });
             } else {
                 listItem.forEach(val => {
                     if (val.id === item1 || val.id === item3) {
+                        // val.numberItem = 1;// so item trong 1 gio hang
                         db.push(val)
                     }
                 });
@@ -41,6 +44,7 @@ const ComponentCart = ({ navigation }) => {
         } else if (item1 === item3) {
             listItem.forEach(val => {
                 if (val.id === item1 || val.id === item2) {
+                    // val.numberItem = 1;// so item trong 1 gio hang
                     db.push(val)
                 }
             });
@@ -48,30 +52,51 @@ const ComponentCart = ({ navigation }) => {
         else {
             listItem.forEach(val => {
                 if (val.id === item1 || val.id === item2 || val.id === item3) {
+                    // val.numberItem = 1;// so item trong 1 gio hang
                     db.push(val)
                 }
             });
         }
-        
-        
+
+
 
         setListCart(db);
     }, [])
 
 
-    
+
     // sum price item
     let sumPrice = 0;
     listCart.forEach(val => {
-        sumPrice += (val.price - (val.price * val.sale) / 100) ;
+        sumPrice += (val.price - (val.price * val.sale) / 100);
     })
-    
+
+    /**
+     * fun add trong item 
+     */
+    const getCallAdd1 = (item) => {
+        console.log("🚀 ~ file: ComponentCart.js ~ line 73 ~ getCallAdd ~ item", item)
+        // let db = listCart;
+        // db.forEach(val => {
+        //     if (val.id === item.id) {
+        //         val.numberItem = 2;
+        //     }
+        // })
+        // setListCart(db);
+
+    }
+
     /**
      * render item view cart
      */
     const renderItem = ({ item }) => {
 
-        let str_price = xuly.setPriceString(Math.floor(item.price - (item.price * item.sale) / 100));
+        const getCallAdd = () => {
+            getCallAdd1(item);
+
+        }
+
+        let str_price = xuly.setPriceString(Math.floor((item.price - (item.price * item.sale) / 100)));
 
         return (
             <View style={[styles.row, {
@@ -87,9 +112,13 @@ const ComponentCart = ({ navigation }) => {
                     <Text style={[, { opacity: 0.6 }]}  >Discount: {item.sale} %</Text>
                     <View style={[, { paddingTop: 2, backgroundColor: '#7d7d7d', marginVertical: 15, }]}  ></View>
                     <View style={[styles.row, { alignItems: 'center' }]}  >
-                        <IconMaterialIcons style={[, {}]} name='add-circle-outline' size={22} color={'#000'} />
+                        <TouchableOpacity onPress={() => getCallAdd()}>
+                            <IconMaterialIcons style={[, {}]} name='add-circle-outline' size={22} color={'#000'} />
+                        </TouchableOpacity>
                         <Text style={[, { paddingHorizontal: 5, }]}> 1 </Text>
-                        <IconFeather style={[, {}]} name='minus-circle' size={22} color={'#000'} />
+                        <TouchableOpacity >
+                            <IconFeather style={[, {}]} name='minus-circle' size={22} color={'#000'} />
+                        </TouchableOpacity>
                         <Text style={[styles.flex_1, {
                             textAlign: 'center',
                             color: color.color_main,
@@ -153,9 +182,9 @@ const ComponentCart = ({ navigation }) => {
             {/*  */}
             <View>
                 <View style={[, { paddingTop: 1, backgroundColor: '#000', marginVertical: 5, }]} ></View>
-                <View  style={[ styles.row ,{justifyContent:'space-between', marginHorizontal: 20,marginVertical: 8,}]}  >
-                    <Text  style={[  ,{fontWeight: 'bold', fontSize:  16,}]}  >Total: </Text>
-                    <Text  style={[  ,{fontWeight: 'bold', color:color.color_main}]}  >{xuly.setPriceString(Math.floor(sumPrice))} $</Text>
+                <View style={[styles.row, { justifyContent: 'space-between', marginHorizontal: 20, marginVertical: 8, }]}  >
+                    <Text style={[, { fontWeight: 'bold', fontSize: 16, }]}  >Total: </Text>
+                    <Text style={[, { fontWeight: 'bold', color: color.color_main }]}  >{xuly.setPriceString(Math.floor(sumPrice))} $</Text>
                 </View>
             </View>
             {/*  */}
