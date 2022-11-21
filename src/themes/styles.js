@@ -48,6 +48,15 @@ export default StyleSheet.create({
         color:'#000',
         borderColor:'#000',
         opacity: 0.6,
+    },
+    menuClick:{
+        position:"absolute",
+        bottom:0,
+        borderTopRightRadius:20,
+        borderTopLeftRadius:20,
+        backgroundColor:'#fff',
+        padding:2,
+        paddingHorizontal:5,
     }
 
 

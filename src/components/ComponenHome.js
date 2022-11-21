@@ -1,7 +1,8 @@
 import { View, Text, Button, StatusBar, TextInput, Image, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
-import IconIonicons from 'react-native-vector-icons/Ionicons'
+import IconFoundation from 'react-native-vector-icons/Foundation'
+import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import styles from '../themes/styles';
@@ -146,7 +147,7 @@ const ComponenHome = ({ navigation }) => {
                 marginBottom: 15,
             }]} >
                 <Image style={[, { width: 110, height: 110 }]} source={{ uri: item.img }} />
-                <View style={[styles.flex_1, {marginVertical:5}]} >
+                <View style={[styles.flex_1, { marginVertical: 5 }]} >
                     <Text style={[, { fontWeight: 'bold', fontSize: 15 }]}  >{item.name}</Text>
                     <Text style={[, { textDecorationLine: 'line-through', opacity: 0.5, marginTop: 5, }]} >$ {item.price}</Text>
                     <View style={[styles.row, {}]} >
@@ -164,6 +165,16 @@ const ComponenHome = ({ navigation }) => {
             </View>
         )
     }
+
+    // menu bar
+    let styleMenuBarName = 1;
+    // let styleMenuBarStyle = styles.menuClick;
+    let styleMenuBarStyle = (val) => {
+        if (val === styleMenuBarName ) {
+            return styles.menuClick;
+        }
+        return null;
+    };
 
     return (
         <View style={[styles.flex_1, {
@@ -322,7 +333,31 @@ const ComponenHome = ({ navigation }) => {
                 />
 
             </View>
-            
+
+            <View style={[styles.row, {
+                backgroundColor: '#000',
+                marginTop: 5,
+                borderRadius: 10,
+                justifyContent: 'space-around'
+
+            }]}  >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                    <View style={styleMenuBarStyle(1)}></View>
+                    <IconMaterialCommunityIcons name={ styleMenuBarName===1 ? 'home' : 'home-outline'} size={25} color={'#eee'} />
+                </TouchableOpacity>
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                    <View style={styleMenuBarStyle(2)}></View>
+                    <IconFontAwesome name={ styleMenuBarName===2 ? 'heart' : 'heart-o'} size={25} color={'#eee'} />
+                </TouchableOpacity>
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                    <View style={styleMenuBarStyle(3)}></View>
+                    <IconAntDesign name={ styleMenuBarName===3 ? 'downsquare' : 'down-square-o'} size={25} color={'#eee'} />
+                </TouchableOpacity>
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems:'center' }]}    >
+                    <View style={styleMenuBarStyle(4)}></View>
+                    <IconFontAwesome name={ styleMenuBarName===4 ? 'user' : 'user-o'} size={25} color={'#eee'} />
+                </TouchableOpacity>
+            </View>
 
             {/* <Text>ComponenHome</Text>
             <Button title=' next ' onPress={() => navigation.navigate('ComponentDetail')} /> */}
