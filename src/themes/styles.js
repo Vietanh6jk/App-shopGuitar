@@ -30,6 +30,25 @@ export default StyleSheet.create({
         alignItems:"center",
     },
 
+    // 
+    listProduct:{
+        padding: 8, 
+        paddingHorizontal: 12,
+        borderRadius:  10, 
+        marginRight: 15,
+        borderWidth:1,
+    },
+    listProduct1:{
+        backgroundColor:'#000',
+        color:'#fff',
+        borderColor:'#eee',
+    },
+    listProduct0:{
+        backgroundColor:'#f9f9f9',
+        color:'#000',
+        borderColor:'#000',
+        opacity: 0.6,
+    }
 
 
     
