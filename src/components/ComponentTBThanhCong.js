@@ -6,7 +6,7 @@ import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommun
 import styles from '../themes/styles';
 import color from '../themes/color';
 
-const ComponentAddress = ({ navigation }) => {
+const ComponentTBThanhCong = ({ navigation }) => {
     return (
         <View style={[styles.flex_1, {
             backgroundColor: color.color_bg,
@@ -24,4 +24,4 @@ const ComponentAddress = ({ navigation }) => {
 }
 ///                        style={[  ,{}]}              ///
 
-export default ComponentAddress;
+export default ComponentTBThanhCong;

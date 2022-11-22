@@ -25,4 +25,7 @@
 #### Screen 7: Address 
 <img src="./AnhMinhHoa/screen_7_Address.png" alt="Không tồn tại !!!" width="300" />
 
+#### Screen 10: Thông báo thành công 
+<img src="./AnhMinhHoa/screen_10_tbThanhCong.png" alt="Không tồn tại !!!" width="300" />
+
 
