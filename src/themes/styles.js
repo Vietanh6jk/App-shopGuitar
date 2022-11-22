@@ -57,8 +57,10 @@ export default StyleSheet.create({
         backgroundColor:'#fff',
         padding:2,
         paddingHorizontal:5,
+    },
+    color_white:{
+        color:'white'
     }
-
 
     
 })
