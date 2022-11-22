@@ -3,4 +3,4 @@ Screen 3 (85%) : can data tren server - update cho Tgian sale
 Screen 4(80%): nút add to cart chua có sk
 Screen 5(75%) : btn add - btn minu -- total
 Screen 6 (100%): .
-Screen 7 (0%): 
+Screen 7 (90%): su ly textInput
